@@ -2,26 +2,35 @@ function add(a, b) {
     return a + b
 }
 
-let result = add(20, 30);
-console.log(result)
+
 
 function subtract(b, c) {
     return b - c
 }
 
-let result2 = subtract(15, 20);
-console.log(result2)
+
 
 function multiply(a, b) {
     return a * b
 }
 
-let result3 = multiply(1, 5);
-console.log(result3);
+
 
 function divide(a, b) {
+    if(b === 0) return "Error"
     return a / b
 }
 
-let result4 = divide(40, 5);
-console.log(result4)
+function operate(operator, a,b) {
+    if (operate === '+') {
+        return add(a, b);
+    } else if (operator === '-') {
+        return subtract(a,b);
+    } else if (operator === '*') {
+        return multiply(a, b) 
+    } else if (operator === '/') {
+        return divide(a, b);
+    } else {
+        return 'Invalid operator';
+    }
+}
