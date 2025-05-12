@@ -17,4 +17,11 @@ function multiply(a, b) {
 }
 
 let result3 = multiply(1, 5);
-console.log(result3)
+console.log(result3);
+
+function divide(a, b) {
+    return a / b
+}
+
+let result4 = divide(40, 5);
+console.log(result4)
