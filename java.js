@@ -22,7 +22,7 @@ function divide(a, b) {
 }
 
 function operate(operator, a,b) {
-    if (operate === '+') {
+    if (operator === '+') {
         return add(a, b);
     } else if (operator === '-') {
         return subtract(a,b);
@@ -34,3 +34,6 @@ function operate(operator, a,b) {
         return 'Invalid operator';
     }
 }
+
+console.log(operate('+', 10, 5));
+
