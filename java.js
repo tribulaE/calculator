@@ -35,5 +35,45 @@ function operate(operator, a,b) {
     }
 }
 
-console.log(operate('+', 10, 5));
+let firstNumber = '';
+let secondNumber = '';
+let currentOperator = null;
+let shouldResetDisplay = false;
+
+const display = document.getElementById('display')
+const digitButtons = document.querySelectorAll('.digit')
+const operatorButtons = document.querySelectorAll('.operator')
+const equalButton = document.getElementById('equal')
+const clearButton = document.getElementById('clear')
+
+
+
+
+
+let currentDisplayValue = '';
+
+
+
+digitButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        if (shouldResetDisplay) {
+            currentDisplayValue = '';
+            shouldResetDisplay = false;
+        }
+
+        const digit = button.textContent;
+
+        if (currentDisplayValue === '0') {
+            currentDisplayValue = digits
+        } else {
+            currentDisplayValue += digit;
+        }
+
+        display.textContent = currentDisplayValue
+
+
+
+    })
+})
+
 
