@@ -1,1 +1,1 @@
-# calculator
+I will be making another project with the Odin Project, this is is going to be a calculator project combining javascript, html and css !

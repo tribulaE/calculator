@@ -1,11 +1,12 @@
+//add , subtract, multiply and divide functions//
 function add(a, b) {
     return a + b
 }
 
 
 
-function subtract(b, c) {
-    return b - c
+function subtract(a, b) {
+    return a - b
 }
 
 
@@ -17,9 +18,12 @@ function multiply(a, b) {
 
 
 function divide(a, b) {
-    if(b === 0) return "Error"
+    if(b === 0) return "Error" //Making sure its not possible to divide by zero//
     return a / b
 }
+
+
+//Calls the  math function based on operator//
 
 function operate(operator, a,b) {
     if (operator === '+') {
@@ -35,10 +39,15 @@ function operate(operator, a,b) {
     }
 }
 
+
+//VARIABLES//
+
 let firstNumber = '';
-let secondNumber = '';
 let currentOperator = null;
 let shouldResetDisplay = false;
+let currentDisplayValue = '';
+
+//DOM ELEMENTS//
 
 const display = document.getElementById('display')
 const digitButtons = document.querySelectorAll('.digit')
@@ -51,10 +60,7 @@ const backspaceButton = document.getElementById('backspace')
 
 
 
-
-let currentDisplayValue = '';
-
-
+//BUTTONS ON CALC//
 
 digitButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -78,10 +84,13 @@ digitButtons.forEach(button => {
     })
 })
 
+
+//OPERATOR BUTTONS//
+
 operatorButtons.forEach(button => {
     button.addEventListener('click', () => {
         if (currentOperator !== null && !shouldResetDisplay) {
-            evaulate();
+            evaluate();
         }
 
         firstNumber = currentDisplayValue;
@@ -92,6 +101,8 @@ operatorButtons.forEach(button => {
     });
 });
 
+//EQUAL BUTTON//
+
 equalsButton.addEventListener('click', () => {
     if(currentOperator === null || shouldResetDisplay) return;
     if(firstNumber === '' || currentDisplayValue === '') return;
@@ -101,6 +112,7 @@ equalsButton.addEventListener('click', () => {
 
 
 
+//MAKING THE CALCULATION FOR THE FUNCTION EVALUTE//
 function evaluate() {
     const secondNumber = currentDisplayValue;
     const a = parseFloat(firstNumber);
@@ -111,20 +123,24 @@ function evaluate() {
         resetCalculator();
         return;
     }
-
+    //MATH OPERATION HERE//
     const result = operate(currentOperator, a, b);
 
-    display.textContent = Math.round(result * 1000) / 1000;
+    display.textContent = Math.round(result * 1000) / 1000; //ROUNDING TO 3 DECIMAL PLACES//
     currentDisplayValue = result.toString();
     firstNumber = currentDisplayValue;
     currentOperator = null;
     shouldResetDisplay = true;
 }
 
+//CLEAR FUNCTION FOR CLEAR BUTTON//
+
 clearButton.addEventListener('click', () => {
     resetCalculator();
     display.textContent = '0';
 });
+
+//RESETING ALL NUMBERS ON THE DISPLAY//
 
 function resetCalculator() {
     firstNumber = '';
@@ -132,6 +148,9 @@ function resetCalculator() {
     currentDisplayValue = '';
     shouldResetDisplay = false;
 }
+
+
+//DECIMAL INPUT//
 
 decimalButton.addEventListener('click', () => {
     if (shouldResetDisplay){
@@ -146,6 +165,9 @@ decimalButton.addEventListener('click', () => {
 
 });
 
+
+//BACKSPACE FUNCTION FOR BUTTON//
+
 backspaceButton.addEventListener('click', () => {
     if (shouldResetDisplay) return;
 
@@ -158,6 +180,7 @@ backspaceButton.addEventListener('click', () => {
 })
 
 
+//KEYBOARD SUPPORT, LETS USERS TYPE WITH ONLY THE NUMBER KEYS//
 
 window.addEventListener('keydown', (e) => {
     if (e.key >= '0' && e.key <= '9') {
