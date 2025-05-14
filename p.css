@@ -7,11 +7,11 @@ body {
 }
 
 .calculator {
-  border: 2px solid #333;
+  border: 5px solid black;
   padding: 10px;
   border-radius: 10px;
   background-color: white;
-  width: 200px;
+  width: 300px;
 }
 
 #display {
@@ -22,23 +22,55 @@ body {
   padding: 10px;
   font-size: 24px;
   border: 1px solid #ccc;
+  overflow-x: auto;
 }
 
 .buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
+  gap: 8px;
+  color: blue;
 }
 
 .btn {
   padding: 15px;
-  font-size: 18px;
+  font-size: 20px;
   border: none;
   background-color: #ddd;
   border-radius: 5px;
   cursor: pointer;
+  text-align: center;
 }
 
 .btn:hover {
   background-color: #bbb;
+}
+
+#equal {
+  grid-column:span 1;
+  background-color: #f2a33c;
+}
+
+#equal:hover {
+  background-color: #bbb;
+}
+
+.operator {
+  background-color: #f2a33c;
+}
+
+.operator:hover {
+  background-color: #e59425;
+}
+
+#clear {
+  grid-column: span 2;
+}
+
+#backspace {
+  grid-column: span 1;
+}
+
+#decimal {
+  grid-column: span 2;
 }
